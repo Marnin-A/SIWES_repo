@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.nav {
+  padding: 2% 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#logo {
+  width: 3rem;
+  border-radius: 0.6rem;
+  aspect-ratio: 1/1;
+}
+#figma_logo {
+  width: 1.5rem;
+}
+#nav-left {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  gap: 1rem;
+}
+#nav-right {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  gap: 1.5rem;
+}
+.link {
+  color: black;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.nav-btn1 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  background-color: #9aa2e6;
+  border: solid 2px #e5e5e5;
+  border-radius: 0.5rem;
+  margin-left: 5%;
+  white-space: nowrap;
+}
+.nav-btn2 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  color: #9aa2e6;
+  background-color: 5e5655;
+  border-radius: 0.5rem;
+  border: none;
+  white-space: nowrap;
+  outline: none;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 3rem;
+}
+.hero_section {
+  display: flex;
+  min-height: 88vh;
+  align-items: center;
+  border-bottom: 2px solid black;
+  gap: 2rem;
+}
+.main_hero_text {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 3.5rem;
+  width: 50%;
+  margin: 1rem;
+  text-align: center;
+}
+.hero_img {
+  width: 45%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-image: url(./images/house.jpg);
+  border-radius: 1.5rem;
+}
+.services_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.services_heading {
+  font-size: 5rem;
+  color: #9aa2e6;
+}
+.services {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.service_card {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+.service_card > img {
+  margin: auto;
+}
+.service_card > h3 {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 700px) {
+  .hero_section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main_hero_text {
+    width: 80%;
+  }
+  .hero_img {
+    width: 100%;
+  }
+  .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .service_card {
+    width: 90%;
+  }
+}
