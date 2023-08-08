@@ -1,3 +1,11 @@
+:root {
+  --navbarHeight: 50px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -24,7 +32,7 @@ body {
   font-weight: 700;
   gap: 1rem;
 }
-#nav-right {
+.nav-right {
   display: flex;
   align-items: center;
   font-size: 1.1rem;
@@ -60,6 +68,11 @@ body {
   border: none;
   white-space: nowrap;
   outline: none;
+}
+.nav-btn2:active {
+  border: #e5e5e5 solid 2px;
+  background-color: #9aa2e6;
+  color: #e5e5e5;
 }
 main {
   display: flex;
@@ -116,24 +129,85 @@ main {
 .service_card > h3 {
   font-size: 1.5rem;
 }
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+.hamburger_bar {
+  display: block;
+  width: 2rem;
+  height: 3px;
+  margin: 5px auto;
+  background-color: black;
+  -webkit-transition: all 0.3s, ease-in-out;
+  transition: all 0.3s, ease-in-out;
+}
 
 @media screen and (max-width: 700px) {
+  #nav-left {
+    color: #9aa2e6;
+  }
   .hero_section {
     flex-direction: column;
     align-items: center;
+    border: none;
+    position: relative;
   }
   .main_hero_text {
-    width: 80%;
+    width: 100%;
+    font-size: 2.3rem;
+    margin: 20% 0;
+    padding: 0% 3%;
+    z-index: 50;
+    color: white;
   }
   .hero_img {
+    position: absolute;
     width: 100%;
+    z-index: 1;
+    top: 10%;
+  }
+  .services_section {
+    margin-top: 15%;
   }
   .services {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 4rem;
   }
   .service_card {
-    width: 90%;
+    width: 60%;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hamburger.active .hamburger_bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .hamburger_bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .hamburger_bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .nav-right {
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    width: 40%;
+    right: -100%;
+    top: var(--navbarHeight);
+    background-color: rgba(154, 162, 230);
+    gap: 0;
+    z-index: 100;
+    transition: 0.3s;
+  }
+  .nav-right.active {
+    width: 100vw;
+    height: 25vh;
+    right: 0%;
+    gap: 1rem;
+    padding-top: 0.5rem;
   }
 }
