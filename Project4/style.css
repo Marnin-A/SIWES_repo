@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "Libre_Bodoni";
+  src: url(./assets/Libre_Bodoni/LibreBodoni-VariableFont_wght.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Libre_Bodoni";
+}
+main:nth-child(1) {
+  background-image: url(./assets/hero1a.jpg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.nav_bar {
+  height: 10vh;
+  background-color: #1b1816;
+  padding: 0% 2%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+.nav_bar > * {
+  height: 100%;
+}
+#title {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+}
+#section_links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav_link {
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+#title > img {
+  width: 1.3rem;
+}
+#title_text {
+  margin-top: 5px;
+}
+#nav_right {
+  display: flex;
+  align-items: center;
+  color: #e1dcba;
+  margin-right: 1rem;
+  gap: 2rem;
+}
+.hero_section {
+  height: 90vh;
+}
