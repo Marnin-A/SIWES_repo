@@ -1,0 +1,182 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.login_section {
+  display: flex;
+  justify-content: space-between;
+  height: 100dvh;
+}
+.js_img {
+  background-image: url(/assets/background.png);
+  background-position: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 50%;
+}
+.login_form {
+  width: 40%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+label {
+  font-weight: 600;
+}
+#heading {
+  font-size: 3rem;
+}
+.input_block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.input_block > input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 1.2rem;
+}
+.input_block > input:hover {
+  border-bottom: 1px solid #d6d1b0;
+}
+.input_block > input:focus {
+  border-bottom: 1px solid #ffe21a;
+}
+.input_block > input:blur {
+  border-bottom: 1px solid black;
+}
+#name_error.hide {
+  display: none;
+}
+#name_error.show {
+  display: block;
+}
+.input_span {
+  display: flex;
+  /* flex-direction: column; */
+  width: 100%;
+  font-size: 1.2rem;
+}
+.input_span > input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 1.2rem;
+  width: 95%;
+}
+.input_span > input:hover {
+  border-bottom: 1px solid #d6d1b0;
+}
+.input_span > input:focus {
+  border-bottom: 1px solid #ffe21a;
+}
+.input_span > input:blur {
+  border-bottom: 1px solid black;
+}
+.show_password_eye {
+  background-image: url(/assets/eye.svg);
+  background-position: 50% 50%;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5%;
+}
+/* .error_section{
+    max-height: ;
+} */
+#btn {
+  background-color: black;
+  font-size: 1.2rem;
+  border-radius: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: white;
+}
+.textField.correct {
+  border-bottom: 2px solid greenyellow;
+}
+.error_section > * {
+  font-size: 0.8rem;
+}
+.textField.error {
+  border-bottom: 1px solid red;
+}
+.display_element {
+  display: block;
+}
+.dont_display {
+  display: none;
+}
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  content: "✔ ";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  content: "✖ ";
+}
+#btn:hover {
+  /* border: 1px solid black; */
+  background-color: #ffe21a;
+  color: black;
+}
+@media screen and (width < 1100px) {
+  #heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .login_form {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (width < 880px) {
+  .login_section {
+    background-image: url(/assets/background.png);
+    background-position: 100% 100%;
+    background-size: 20%;
+    background-repeat: repeat;
+    justify-content: center;
+    align-items: center;
+  }
+  .js_img {
+    display: none;
+  }
+  .login_form {
+    width: 50%;
+    height: 80%;
+    padding-top: 2%;
+  }
+}
+@media screen and (width < 680px) {
+  #heading {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (width < 480px) {
+  .login_form {
+    width: 90%;
+  }
+}
