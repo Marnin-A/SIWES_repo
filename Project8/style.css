@@ -8,22 +8,36 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  padding-top: -5%;
   align-items: center;
   flex-direction: column;
   gap: 5%;
   background-image: url(/assets/background.jpg);
   background-position: 50% 50%;
+  background-size: cover;
 }
 h1 {
   font-size: 3rem;
+  color: #0d2e62;
 }
 #search_area {
   display: flex;
   align-items: center;
   height: min-content;
+  color: white;
+  font-size: 2rem;
+  text-shadow: 2px 2px #0d2e62;
+}
+#search_box {
+  height: 100%;
+  border-radius: 1rem;
+  margin-left: 5%;
+  padding-left: 5%;
+  border: none;
+  outline: none;
 }
 #btn {
-  width: 1rem;
+  width: 5rem;
   aspect-ratio: 1/1;
   outline: none;
   border: none;
@@ -31,12 +45,16 @@ h1 {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(/assets/refresh.svg);
+  /* background-image: url(/assets/refresh.svg); */
 }
 section {
   width: 100%;
   height: 50dvh;
   display: flex;
   flex-wrap: wrap;
+  padding-top: 5%;
   justify-content: center;
+}
+section > img {
+  margin: 2%;
 }
