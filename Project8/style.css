@@ -54,6 +54,7 @@ section {
   flex-wrap: wrap;
   padding-top: 5%;
   justify-content: center;
+  column-count: 3;
 }
 section > img {
   margin: 2%;
