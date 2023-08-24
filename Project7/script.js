@@ -38,29 +38,37 @@ function ValidateEmail() {
 }
 
 // Hide the password error messages when the window loads
-window.onload = () => {
-  userPassword.onfocus = () => {
-    document.getElementById("password_error").classList.remove("dont_display");
-    document.getElementById("password_error").classList.add("display_element");
-  };
-  userPassword.onblur = function () {
-    document
-      .getElementById("password_error")
-      .classList.remove("display_element");
-    document.getElementById("password_error").classList.add("dont_display");
-  };
-};
+// window.onload = () => {
+//   userPassword.onfocus = () => {
+//     document.getElementById("password_error").classList.remove("dont_display");
+//     document.getElementById("password_error").classList.add("display_element");
+//   };
+// userPassword.onblur = function () {
+//   document
+//     .getElementById("password_error")
+//     .classList.remove("display_element");
+//   document.getElementById("password_error").classList.add("dont_display");
+// };
+// };
 
 // Check if the password is strong enough
 function ValidatePassword() {
   // Validate lowercase letters
+  const AllChecks = {
+    lowercase: false,
+    uppercase: false,
+    hasNumber: false,
+    isLongEnough: false,
+  };
   let lowerCaseLetters = /[a-z]/g;
   if (userPassword.value.match(lowerCaseLetters)) {
     letter.classList.remove("invalid");
     letter.classList.add("valid");
+    AllChecks.lowercase = true;
   } else {
     letter.classList.remove("valid");
     letter.classList.add("invalid");
+    AllChecks.lowercase = false;
   }
 
   // Validate capital letters
@@ -68,9 +76,11 @@ function ValidatePassword() {
   if (userPassword.value.match(upperCaseLetters)) {
     capital.classList.remove("invalid");
     capital.classList.add("valid");
+    AllChecks.uppercase = true;
   } else {
     capital.classList.remove("valid");
     capital.classList.add("invalid");
+    AllChecks.uppercase = false;
   }
 
   // Validate numbers
@@ -78,19 +88,44 @@ function ValidatePassword() {
   if (userPassword.value.match(numbers)) {
     number.classList.remove("invalid");
     number.classList.add("valid");
+    AllChecks.hasNumber = true;
   } else {
     number.classList.remove("valid");
     number.classList.add("invalid");
+    AllChecks.hasNumber = false;
   }
 
   // Validate length
   if (userPassword.value.length >= 8) {
     length.classList.remove("invalid");
     length.classList.add("valid");
+    AllChecks.isLongEnough = true;
   } else {
     length.classList.remove("valid");
     length.classList.add("invalid");
+    AllChecks.isLongEnough = false;
   }
+
+  function checkAllValuesAreTrue(obj) {
+    const checkedValues = [];
+    const keyList = Object.keys(obj);
+    for (let i = 0; i < keyList.length; i++) {
+      let prop = Object.keys(obj)[i];
+      checkedValues.push(obj[prop]);
+    }
+    console.log(checkedValues);
+    let AllTrue = checkedValues.includes(false);
+
+    if (AllTrue) {
+      document
+        .getElementById("password_error")
+        .classList.remove("dont_display");
+      document
+        .getElementById("password_error")
+        .classList.add("display_element");
+    }
+  }
+  checkAllValuesAreTrue(AllChecks);
 }
 
 function ShowOrHidePassword() {
@@ -112,10 +147,13 @@ function ShowOrHideConfirmPassword() {
 function ValidateConfirmPassword() {
   console.log({
     og: userPassword.value,
-    new: userConfirmPassword.value,
+    new: ConfirmPassword.value,
   });
 
-  if (userConfirmPassword.value == userPassword.value) {
+  if (
+    ConfirmPassword.value == userPassword.value &&
+    ConfirmPassword.value !== ""
+  ) {
     // Remove error styles and add correct styles
     ConfirmPassword.classList.remove("error");
     ConfirmPassword.classList.add("correct");
@@ -139,8 +177,23 @@ function ValidateConfirmPassword() {
       .classList.add("display_element");
   }
 }
-function handleSubmit(e) {
-  e.preventDefault;
+function handleSubmit() {
   ValidateName();
   ValidateEmail();
+  // Display password related error messages visible
+  // () => {
+  //   // Make the password error message visible
+  //   document.getElementById("password_error").classList.remove("dont_display");
+
+  //   document.getElementById("password_error").classList.add("display_element");
+  //   // Make the confirm password error message visible
+  //   document
+  //     .getElementById("confirm_password_error")
+  //     .classList.remove("dont_display");
+  //   document
+  //     .getElementById("confirm_password_error")
+  //     .classList.add("display_element");
+  // };
+  ValidatePassword();
+  ValidateConfirmPassword();
 }
