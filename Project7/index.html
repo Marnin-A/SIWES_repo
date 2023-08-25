@@ -22,7 +22,7 @@
             onchange="ValidateName()"
             class="textField"
             required
-            placeholder="John Doe"
+            placeholder="Enter your name"
           />
           <div class="error_section hide" id="name_error">
             <p class="invalid">Name must be greater than 2 letters</p>
@@ -39,7 +39,9 @@
             required
             placeholder="email@gmail.com"
           />
-          <div class="error_section" id="email_error"></div>
+          <div class="error_section hide" id="email_error">
+            <p class="invalid">Name must be greater than 2 letters</p>
+          </div>
         </div>
         <div class="input_block">
           <label for="password">Password:</label>
@@ -62,6 +64,9 @@
           <div class="error_section dont_display" id="password_error">
             <h3>Password must contain the following:</h3>
             <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="special_char" class="invalid">
+              A <b>special character</b> letter
+            </p>
             <p id="capital" class="invalid">
               A <b>capital (uppercase)</b> letter
             </p>

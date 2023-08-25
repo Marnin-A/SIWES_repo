@@ -2,6 +2,7 @@ const letter = document.getElementById("letter");
 const capital = document.getElementById("capital");
 const number = document.getElementById("number");
 const length = document.getElementById("length");
+const specialChar = document.getElementById("special_char");
 const username = document.getElementById("name_input");
 const userEmail = document.getElementById("email_input");
 const userPassword = document.getElementById("password_input");
@@ -29,37 +30,31 @@ function ValidateEmail() {
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (userEmail.value === "") {
     username.classList.toggle("error");
+    document.getElementById("email_error").classList.remove("hide");
+    document.getElementById("email_error").classList.add("show");
   }
   if (emailRegex.test(userEmail.value)) {
     userEmail.classList.toggle("correct");
+    document.getElementById("email_error").classList.add("hide");
+    document.getElementById("email_error").classList.remove("show");
   } else {
     userEmail.classList.toggle("error");
+    document.getElementById("email_error").classList.remove("hide");
+    document.getElementById("email_error").classList.add("show");
   }
 }
 
-// Hide the password error messages when the window loads
-// window.onload = () => {
-//   userPassword.onfocus = () => {
-//     document.getElementById("password_error").classList.remove("dont_display");
-//     document.getElementById("password_error").classList.add("display_element");
-//   };
-// userPassword.onblur = function () {
-//   document
-//     .getElementById("password_error")
-//     .classList.remove("display_element");
-//   document.getElementById("password_error").classList.add("dont_display");
-// };
-// };
+const AllChecks = {
+  lowercase: false,
+  uppercase: false,
+  hasNumber: false,
+  hasSpecialChar: false,
+  isLongEnough: false,
+};
 
 // Check if the password is strong enough
 function ValidatePassword() {
   // Validate lowercase letters
-  const AllChecks = {
-    lowercase: false,
-    uppercase: false,
-    hasNumber: false,
-    isLongEnough: false,
-  };
   let lowerCaseLetters = /[a-z]/g;
   if (userPassword.value.match(lowerCaseLetters)) {
     letter.classList.remove("invalid");
@@ -69,6 +64,20 @@ function ValidatePassword() {
     letter.classList.remove("valid");
     letter.classList.add("invalid");
     AllChecks.lowercase = false;
+  }
+
+  // Validate Special Characters letters
+  let SpecialCharacters =
+    /[\!\@\#\$\%\^\&\*\)\(\+\=\.\<\>\{\}\[\]\:\;\'\"\|\~\`\_\-]/g;
+  console.log(userPassword.value.match(SpecialCharacters));
+  if (userPassword.value.match(SpecialCharacters)) {
+    specialChar.classList.remove("invalid");
+    specialChar.classList.add("valid");
+    AllChecks.hasSpecialChar = true;
+  } else {
+    specialChar.classList.remove("valid");
+    specialChar.classList.add("invalid");
+    AllChecks.hasSpecialChar = false;
   }
 
   // Validate capital letters
@@ -113,7 +122,6 @@ function ValidatePassword() {
       let prop = Object.keys(obj)[i];
       checkedValues.push(obj[prop]);
     }
-    console.log(checkedValues);
     let AllTrue = checkedValues.includes(false);
 
     if (AllTrue) {
@@ -180,20 +188,33 @@ function ValidateConfirmPassword() {
 function handleSubmit() {
   ValidateName();
   ValidateEmail();
-  // Display password related error messages visible
-  // () => {
-  //   // Make the password error message visible
-  //   document.getElementById("password_error").classList.remove("dont_display");
-
-  //   document.getElementById("password_error").classList.add("display_element");
-  //   // Make the confirm password error message visible
-  //   document
-  //     .getElementById("confirm_password_error")
-  //     .classList.remove("dont_display");
-  //   document
-  //     .getElementById("confirm_password_error")
-  //     .classList.add("display_element");
-  // };
   ValidatePassword();
   ValidateConfirmPassword();
+  let AllTrue;
+  function checkAllValuesAreTrue(obj) {
+    const checkedValues = [];
+    const keyList = Object.keys(obj);
+    for (let i = 0; i < keyList.length; i++) {
+      let prop = Object.keys(obj)[i];
+      checkedValues.push(obj[prop]);
+    }
+    AllTrue = checkedValues.includes(false);
+
+    if (AllTrue) {
+      document
+        .getElementById("password_error")
+        .classList.remove("dont_display");
+      document
+        .getElementById("password_error")
+        .classList.add("display_element");
+    }
+  }
+  checkAllValuesAreTrue(AllChecks);
+  console.log(AllTrue);
+  if (!AllTrue) {
+    window.open(
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      "_blank"
+    );
+  }
 }

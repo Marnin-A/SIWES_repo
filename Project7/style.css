@@ -61,6 +61,12 @@ label {
 #name_error.show {
   display: block;
 }
+#email_error.hide {
+  display: none;
+}
+#email_error.show {
+  display: block;
+}
 .input_span {
   display: flex;
   /* flex-direction: column; */
